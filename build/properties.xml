@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="..">
+	
+    <property file="build/version.properties"></property>
+    
+	<property name="web.root" value="${basedir}/WebContent"></property>
+	<property name="classpath" value="${web.root}/WEB-INF/lib"></property>
+	
+    <property name="src" value="${basedir}/src"></property>
+	<property name="java.src" value="${basedir}/src/main/java"></property>
+	<property name="java.resources" value="${basedir}/src/main/resources"></property>
+	
+	<property name="classes" value="${basedir}/classes"></property>
+	<property name="dist" value="${basedir}/dist"></property>
+	
+	<property name="Qi.Qipay.as" value="Qi.Qipay.as"></property>
+	<property name="Qi.Qipay.as-1.0.0.RELEASE.jar" value="${Qi.Qipay.as}-${major.version}.${minor.version}.${revision}.${build.label}-${build}.jar"></property>
+	<property name="Qi.Qipay.as-1.0.0.RELEASE.war" value="${Qi.Qipay.as}-1.0.0.RELEASE.war"></property>
+	
+	<property name="build.root" value="${basedir}/root"></property>
+	<!--
+	<property name="build.root" value="${basedir}/deployment/site/ROOT"></property>
+	-->
+	<property name="build.classpath" value="${build.root}/WEB-INF/lib"></property>
+	
+	<path id="path.classpath">
+        <fileset dir="${classpath}">
+            <include name="*.jar" />
+        </fileset>
+		<!--
+        <fileset dir="${env.JAVA_HOME}/lib">
+            <include name="*.jar" />
+        </fileset>
+        <pathelement location="${javaSrcOutputDir}" />
+        <pathelement location="${javaTestOutputDir}" />
+        <fileset dir="${libDir}">
+            <include name="*.jar" />
+        </fileset>
+        -->
+    </path>
+	
+</project>

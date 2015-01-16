@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir=".." default="help">
+	
+	<import file="properties.xml"/>
+	
+	<target name="base">
+	    <echo>+ ${basedir}/build</echo>
+		<echo>+ Base dir: ${basedir}</echo>
+	</target>
+	
+	<target name="help" depends="base">
+	    <echo>+-----------------------------------------------+</echo>
+		<echo>+ Building tools for Qi pay AS                     +</echo>
+		<echo>+-----------------------------------------------+</echo>
+		<echo>+ Usage: </echo>
+		<echo>+ </echo>
+		<echo>+ ant help: Prints help information for usage(How to use!)</echo>
+		<echo>+ ant: As same as command: ant help</echo>
+		<echo>+ </echo>
+		<echo>+ Default command ant to print help information.</echo>
+		<echo>+ </echo>
+		<echo>+ ant compile: Compile all source file.</echo>
+		<echo>+ ant recompile: Recompile all source file.</echo>
+		<echo>+ ant build:jar: Just building source files to jar file.</echo>
+		<echo>+ ant build: Building </echo>
+		<echo>+ ant compileAndbuild: Compile all source file and execute building.</echo>
+		<echo>+ </echo>
+		<echo>+-----------------------------------------------+</echo>
+	</target>
+	
+	<target name="init">
+	    <mkdir dir="${classes}"/>
+		<mkdir dir="${build.root}"/>
+	</target>
+	
+	<target name="compile" depends="base, init">
+	    <javac debug="true" listfiles="true" source="1.6" target="1.6" verbose="false" nowarn="true" encoding="utf-8" 
+	    	srcdir="${src}" destdir="${classes}">
+	        <classpath refid="path.classpath"></classpath>
+	    </javac>
+		
+		<copy todir="${classes}">
+		    <fileset dir="${java.src}">
+			    <include name="**/*.xml"/>
+			</fileset>
+		</copy>
+		<copy todir="${classes}">
+		    <fileset dir="${java.resources}">
+		        <include name="**/*.xml"/>
+		    	<include name="**/*.properties"/>
+		    </fileset>
+		</copy>
+	</target>
+	
+	<target name="recompile" depends="clear, compile">
+	    <!--  -->
+	</target>
+	
+	<target name="build:jar" depends="compile">
+		<echo>+ Building ${Qi.sanguo.gos} - ${Qi.sanguo.gos-1.0.0.RELEASE.jar}</echo>
+		<echo></echo>
+		<delete file="${dist}/${Qi.sanguo.gos-1.0.0.RELEASE.jar}"></delete>
+		<jar jarfile="${dist}/${Qi.sanguo.gos-1.0.0.RELEASE.jar}" basedir="${classes}" />
+	</target>
+	
+	<target name="build:war">
+	
+	</target>
+	
+    <target name="build" depends="clear, build:jar">
+    	<copy todir="${build.root}">
+            <fileset dir="${web.root}">
+                <include name="**/*.*"/>
+            	<exclude name="WEB-INF/lib/servlet-api.jar"/>
+            </fileset>
+        </copy>
+        <copy todir="${build.classpath}" file="${dist}/${Qi.sanguo.gos-1.0.0.RELEASE.jar}"></copy>
+    	<jar jarfile="${dist}/${Qi.sanguo.gos-1.0.0.RELEASE.war}" basedir="${build.root}" />
+    </target>
+	
+	<target name="clear">
+	    <delete dir="${classes}"></delete>
+		<delete dir="${build.root}"/>
+	</target>
+</project>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir=".." default="help">
+	
+	<import file="../build/properties.xml"/>
+	<import file="tomcat/properties.xml"/>
+	    
+    <target name="base">
+        <echo>+ ${basedir}/release</echo>
+        <echo>+ Base dir: ${basedir}</echo>
+    </target>
+    
+    <target name="help" depends="base">
+        <echo>+-----------------------------------------------+</echo>
+        <echo>+ Release tools for Qi gos                      +</echo>
+        <echo>+-----------------------------------------------+</echo>
+        <echo>+ Usage: </echo>
+        <echo>+ </echo>
+        <echo>+ ant help: Prints help information for usage(How to use!)</echo>
+        <echo>+ ant: As same as command: ant help</echo>
+        <echo>+ </echo>
+        <echo>+ Default command ant to print help information.</echo>
+        <echo>+ </echo>
+        <echo>+ ant start: Compile all source file.</echo>
+        <echo>+ ant stop: Recompile all source file.</echo>
+        <echo>+ ant restart: Just building source files to jar file.</echo>
+        <echo>+ ant status: Building </echo>
+        <echo>+ ant start:verbose: Compile all source file and execute building.</echo>
+        <echo>+ </echo>
+        <echo>+-----------------------------------------------+</echo>
+    </target>
+	
+	<target name="profile">
+		<echo>+ Environment - ${env}</echo>
+        <echo>+ Log dir - ${log.dir}</echo>
+        <echo>+ Port - ${port}</echo>
+        <echo>+ Debugging port - ${server.tomcat.debug.port}</echo>
+        <echo>+ Tomcat port - ${server.tomcat.port}</echo>
+        <echo>+ Root - ${build.root}/..</echo>
+	</target>
+	
+	<target name="start" depends="profile">
+		<echo>+ Starting tomcat...</echo>
+        <java classname="org.apache.catalina.startup.Bootstrap" fork="true" maxmemory="512M" 
+            dir="${root}" spawn="false">
+            <classpath refid="tomcat.classpath" />
+            <classpath refid="path.classpath" />
+        	<classpath refid=".classpath" />
+            <classpath path="${build.root}" />
+        	
+            <jvmarg value="-Dcatalina.home=${tomcat.home}" />
+            <jvmarg value="-Dcatalina.base=${catalina.base}" />
+            <jvmarg value="-Xms512M" />
+            <jvmarg value="-Xmx512M" />
+            <sysproperty key="tomcat.port" value="${server.tomcat.port}" />
+            <sysproperty key="port" value="${port}" />
+            <sysproperty key="env" value="${env}" />
+            <sysproperty key="component" value="Qi-gos" />
+            <sysproperty key="logsDir" value="${log.dir}" />
+
+            <jvmarg value="-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=${server.tomcat.debug.port}" />
+            <jvmarg value="-Xdebug" />
+            <arg line="start" />
+        </java>
+		<echo>+ Tomcat started up...</echo>
+	</target>
+	
+	<target name="start:verbose">
+	
+	</target>
+	
+	<target name="stop" depends="profile">
+		<echo>+ Stopping tomcat...</echo>
+        <java classname="org.apache.catalina.startup.Bootstrap" fork="true" maxmemory="512M" 
+            dir="${root}" spawn="false">
+            <classpath refid="tomcat.classpath" />
+            <classpath refid="path.classpath" />
+            <classpath refid=".classpath" />
+            <classpath path="${build.root}" />
+        	
+            <jvmarg value="-Dcatalina.home=${tomcat.home}" />
+            <jvmarg value="-Dcatalina.base=${catalina.base}" />
+            <jvmarg value="-Xms512M" />
+            <jvmarg value="-Xmx512M" />
+            <sysproperty key="tomcat.port" value="${server.tomcat.port}" />
+            <sysproperty key="port" value="${port}" />
+            <sysproperty key="env" value="${env}" />
+            <sysproperty key="component" value="site" />
+            <sysproperty key="logsDir" value="${log.dir}" />
+
+            <arg line="stop" />
+        </java>
+        <echo>+ Tomcat stopped...</echo>
+	</target>
+	
+	<target name="restart">
+	
+	</target>
+	
+	<target name="status">
+	
+	</target>
+</project>

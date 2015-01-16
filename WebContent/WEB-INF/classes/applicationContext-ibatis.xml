@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- 
+	
+	 -->
+	<bean id="propertyConfigurer" class="com.qidea.payment.PropertyPlaceholder">
+		<property name="locations">
+			<list>
+				<value>classpath:datasource.properties</value>
+				<value>classpath:applicationContext.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 
+	
+	 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.connection.driver_class}" />
+		<property name="jdbcUrl" value="${jdbc.connection.url}" />
+		<property name="user" value="${jdbc.connection.username}" />
+		<property name="password" value="${jdbc.connection.password}" />
+		<property name="minPoolSize" value="${jdbc.minPoolSize}" />
+		<property name="maxPoolSize" value="${jdbc.maxPoolSize}" />
+		<property name="initialPoolSize" value="${jdbc.initialPoolSize}" />
+		<property name="idleConnectionTestPeriod" value="300" />
+		<property name="breakAfterAcquireFailure" value="false" />
+		<property name="checkoutTimeout" value="100000" />
+		<property name="maxIdleTime" value="60" />
+		<property name="acquireRetryAttempts" value="30" />
+		<property name="acquireIncrement" value="3" />
+		<property name="testConnectionOnCheckin" value="true"></property>
+	</bean>
+
+	<!-- 
+	
+	 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:ibatis/ibatis-config.xml"></property>
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<!-- 
+	
+	 -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
+		<!-- 
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+		 -->
+	</bean>
+
+</beans>
