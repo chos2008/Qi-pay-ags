@@ -101,7 +101,7 @@
 		</c:otherwise>
 		</c:choose>
     	<div style="width: 100%; height: auto; border: 0px solid silver; border-top: 1px solid silver;">
-    		<label style="font-size: 10px; color: gray;">上海齐思客服热线: 021-00000000 | 问题反馈</label>
+    		<label style="font-size: 10px; color: gray;">上海正途网络科技有限公司客服热线: 021-00000000 | 问题反馈</label>
     	</div>
     </div>
 </div>

@@ -8,7 +8,7 @@
 	<!-- 
 	
 	 -->
-	<bean id="propertyConfigurer" class="com.qidea.payment.PropertyPlaceholder">
+	<bean id="propertyConfigurer" class="com.chos.payment.PropertyPlaceholder">
 		<property name="locations">
 			<list>
 				<value>classpath:datasource.properties</value>

@@ -1,14 +1,14 @@
-#Mon Nov 19 11:11:44 CST 2012
+#Sat Jan 31 18:25:08 CST 2015
 eclipse.preferences.version=1
-encoding//src/main/java/com/qidea/payment/CallbackJSONResponse.java=UTF-8
-encoding//src/main/java/com/qidea/payment/DefaultResponse.java=UTF-8
-encoding//src/main/java/com/qidea/payment/JSONException.java=UTF-8
-encoding//src/main/java/com/qidea/payment/RequestItem.java=UTF-8
-encoding//src/main/java/com/qidea/payment/Service.java=UTF-8
-encoding//src/main/java/com/qidea/payment/Ta.java=UTF-8
-encoding//src/main/java/com/qidea/payment/TaA.java=UTF-8
-encoding//src/main/java/com/qidea/payment/ThirdPaymentService.java=UTF-8
-encoding//src/main/java/com/qidea/payment/rest/service/PaymentRestService.java=UTF-8
-encoding//src/main/java/com/qidea/payment/rest/service/PaymentRestServiceImpl.java=UTF-8
-encoding//src/main/java/com/qidea/payment/rest/service/RequestBody.java=UTF-8
+encoding//src/main/java/com/chos/payment/CallbackJSONResponse.java=UTF-8
+encoding//src/main/java/com/chos/payment/DefaultResponse.java=UTF-8
+encoding//src/main/java/com/chos/payment/JSONException.java=UTF-8
+encoding//src/main/java/com/chos/payment/RequestItem.java=UTF-8
+encoding//src/main/java/com/chos/payment/Service.java=UTF-8
+encoding//src/main/java/com/chos/payment/Ta.java=UTF-8
+encoding//src/main/java/com/chos/payment/TaA.java=UTF-8
+encoding//src/main/java/com/chos/payment/ThirdPaymentService.java=UTF-8
+encoding//src/main/java/com/chos/payment/rest/service/PaymentRestService.java=UTF-8
+encoding//src/main/java/com/chos/payment/rest/service/PaymentRestServiceImpl.java=UTF-8
+encoding//src/main/java/com/chos/payment/rest/service/RequestBody.java=UTF-8
 encoding/<project>=UTF-8
